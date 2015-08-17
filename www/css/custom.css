@@ -873,7 +873,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 
 
 
-/* FEEL GOOD */
+/* MAIN PAGE */
 #mainpage_body {
     padding: 20px;
     height: 100%;
@@ -895,6 +895,16 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 #mainpage_body p {
     font-size: 16px;
 }
+
+#mainpage_body_normal {
+    padding: 20px;
+    height: 100%;
+    text-align: left;
+    width: 100%;
+    top: 100%;
+    position: relative;
+}
+
 
 .collapsible-header {
     font-size: 16px !important;
@@ -926,3 +936,39 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     z-index: 7;
     position: absolute;
 }
+.quote {
+    background-color: #efefef;
+    padding: 20px;
+    border-radius:3px;
+    font-style: italic;
+}
+
+.action-btn {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0px;
+    text-transform: initial;
+}
+
+/* INSIDE PAGE */
+.page-title {
+    font-size:30px;
+}
+
+.collapsible-body ol li {
+    list-style-type: disc;
+    list-style-position: inside;
+    text-indent: -1em;
+    padding-left: 1em;
+    padding-bottom: 15px;
+}
+
+.collapsible-body ol {
+    padding: 20px;
+    display: table;
+    counter-reset: foo;
+    padding-bottom: 15px;
+}
+
+
+

@@ -1,0 +1,236 @@
+<html>
+<head>
+	<title>FeelGood</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=0, width=device-width, height=device-height"/>
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <!-- GRAB FORM  -->
+    <script type="text/javascript">
+            function submitForm() {
+                var uname = $('[name="username"]').val();
+                var _email = $('[name="email"]').val();
+                 
+                window.localStorage.setItem("username", uname);
+                window.localStorage['email'] = _email;
+                 
+                $.mobile.changePage( "#page2", { reverse: false, transition: "slide" } );
+                 
+                $('#output').html("Username: " + window.localStorage.getItem("username") + "<br>" + 
+                                    "Email: " + window.localStorage["email"]
+                                );
+                return false;
+            }
+        </script>
+</head>
+<body>
+	
+	<!-- LOAD SPINNER -->
+	<!--
+	<div class="spinner spinner-active gradient-radial">
+		<div class="logo"><img src="img/rolvid-logo.svg" /></div>
+		<div class="preloader-wrapper big active">
+
+			<div class="spinner-layer spinner-red-only">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+				<div class="gap-patch">
+					<div class="circle"></div>
+				</div>
+				<div class="circle-clipper right">
+					<div class="circle"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	-->
+
+	<!-- SWIPER SLIDER -->
+
+	<div data-role="page" id="page1" >
+            <div data-role="header" >
+                <h1>FORM</h1>
+            </div>
+            <div data-role="content"> 
+                <form method="POST" onSubmit="return submitForm()" data-ajax="false">
+                    <label class="ui-hidden-accessible">Username</label><input name="username" type="text" placeholder="Username">
+                    <input name="email" type="text" placeholder="Email">
+            
+                    <input type="submit" value="Submit">
+                </form>
+                                 
+            </div>
+            
+        </div>
+         
+        <div data-role="page" id="page2" data-add-back-btn="true">
+         
+            <div data-role="header" >
+                
+                <h1>Page Two</h1>
+            </div>
+            <div data-role="content"> 
+                <div id="output">
+                </div>
+                     
+            </div>
+             
+        </div>
+
+
+<!-- Modal -->
+<div id="modal1" class="modal bottom-sheet modal-home">
+	<div class="modal-content gradient-radial">
+	  <!-- Login Buttons -->
+	  <p class="center login-text">Sign-in with</p>
+		<button class="waves-effect waves-light btn btn-small blue modal-button"><img class="material-icons left" src="img/facebook.svg">Facebook</button>
+		<button class="waves-effect waves-light btn btn-small btn-twitter modal-button"><img class="material-icons left" src="img/twitter.svg">Twitter</button>
+		<p class="center">By using Rolvid, you agree to Rolvid's</br><a href="video.html" >Terms of use</a> and <a href="video.html" >Privacy Policy</a></p>
+	</div>
+</div>
+
+
+
+	<!-- Slide animation -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $("#top-animation").click(function() {
+		        $(".swiper-slide").animate({
+		            height: '35%'
+		        }, 300);
+		        $(".bottom-title").animate({
+		            opacity: '0.000'
+		        }, 300);
+		        $("#top-animation-reverse").animate({
+		            height: '35vh'
+		        }, 300);   
+		        $(".swiper-pagination").toggle({
+		            display: 'none'
+		        }, 300);  
+		         $("#mainpage_body").toggle({
+		            display: 'block !important'
+		        }, 0); 
+		        $("#mainpage_body").animate({
+		            opacity: '0.999'
+		        }, 1000); 
+
+		         
+		    });                         
+		});
+	</script>
+
+	<script type="text/javascript">
+				$(document).ready(function() {
+		    $("#top-animation-reverse").click(function() {
+		        $(".swiper-slide").animate({
+		            height: '100%'
+		        }, 500);
+		        $(".bottom-title").animate({
+		            opacity: '0.999'
+		        }, 500);
+		        $("#top-animation-reverse").animate({
+		            height: '0vh'
+		        }, 500);
+		        $(".swiper-pagination").toggle({
+		            display: 'block'
+		        }, 500); 
+		         $("#mainpage_body").toggle({
+		            display: 'none !important'
+		        }, 0); 
+		         $("#mainpage_body").animate({
+		            opacity: '0.000'
+		        }, 500); 
+		        
+		    });                         
+		});
+	</script>
+
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/materialize.js"></script>
+	<script src="js/prism.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/i18next-1.10.1.min.js"></script>
+	<script src="js/custom.js"></script>
+
+	<!-- Swiper JS -->
+    <script src="js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+    </script>
+
+	<script type="text/javascript" charset="utf-8">
+	document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        i18n.init(function(err, t) {
+          $("#wrapper-home").i18n();
+          $("#wrapper-login").i18n();
+          $("#wrapper-signup").i18n();
+        });
+		$('#btnLogin').click(function(){
+		    var loginPassword = $('#login-password').val();
+		    var loginMsisdn = $('#login-msisdn').val();
+
+            if(!loginMsisdn || !loginPassword) {
+		        $('.error').text("All field must not be empty");
+		    }else if(loginPassword.length<4 || loginPassword.length>20 ) {
+                $('.error').text("Password must be 4-20 characters");
+		    }
+		    else {
+                var tokenData = {country_code: "62", msisdn: $('#login-msisdn').val(), password: $('#login-password').val(), login: 1}
+                clear();
+                requestToken(tokenData);
+			}
+		});
+		$('#btnSignup').click(function(){
+		    var registerName = $('#register-name').val();
+		    var registerPassword = $('#register-password').val();
+		    var registerMsisdn = $('#register-msisdn').val();
+
+            if(!registerMsisdn || !registerPassword || !registerName) {
+		        $('.error').text("All field must not be empty");
+		    }else if(registerPassword.length<4 || registerPassword.length>20 ) {
+                $('.error').text("Password must be 4-20 characters");
+		    }
+		    else {
+                window.localStorage.setItem("msisdn", $('#msisdn').val());
+                var registerData = {country_code: "62", msisdn: $('#register-msisdn').val(), password: $('#register-password').val(), name: $('#register-name').val()}
+                clear();
+                register(registerData);
+            }
+		});
+		$('#btnForgot').click(function(){
+		    clear();
+			window.location.href = "forgot.html";
+		});
+		$('#login-btnSignup').click(function() {
+		    clear();
+			$('#btn-signup').click();
+			$("#wrapper-login").hide();
+		});
+		$('#signup-btnLogin').click(function() {
+		    clear();
+			$('#btn-login').click();
+			$("#wrapper-signup").hide();
+		});
+    }
+    </script>
+
+    <!-- Hide loading spinner -->
+    <script type="text/javascript" charset="utf-8">
+		document.addEventListener("deviceready", onDeviceReady, false);   
+		function onDeviceReady() {
+		$('.spinner').hide();
+		}
+	</script>
+
+	<script src="js/member.js"></script>
+	<script src="cordova.js"></script>
+</body>
+</html>

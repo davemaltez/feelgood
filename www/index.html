@@ -1,6 +1,7 @@
 <html>
 <head>
 	<title>FeelGood</title>
+	<meta charset="utf-8" />
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=0, width=device-width, height=device-height"/>
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	<link type="text/css" rel="stylesheet" href="css/custom.css">
@@ -40,9 +41,10 @@
 		            	<a href="#" id="top-animation">
 						<h3 class="bottom-title gradient-black">Nothing is more important </br> than feeling good now</h3>
 						</a>
-						<section id="mainpage_body">       
+						<section id="mainpage_body">  
 					          <h1>Feel good now</h1>
-					          <p>Nothing is more important then feeling good now.</p>
+					          <p><mark>Nothing is more important than feeling good now.</mark></p>
+					          <p class="quote">"If you understand the power of feeling good now, you will hold the key to achieve any state of bieng, wealth and anything that you desire. "</p>
 					          <p>
 					            Most people are about as happy as they make up their minds to be.
 					            Happy people realize happiness is a choice. They are not held hostage by their circumstances and they do not seek happiness in people or possessions. They understand that when we stop chasing the worlds definition of happiness, we begin to see the decision to experience happiness has been right in front of us all along.
@@ -50,9 +52,17 @@
 					           <p>
 					            Simply knowing that happiness is a choice is not enough. Fully experiencing it still requires a conscience decision to do so each day.
 					          </p>
-					          <p>Consider this list of 12 Intentional Actions to Choose Happiness Today. Embrace one new action item… practice all of them… or simply use them as inspiration to discover your own.
+					          <p><b>Intentional Actions to Choose Happiness Today:</b>
 					          </p>
+					          <div>
+					          	<a class="waves-effect waves-light btn-large action-btn">Count your Blessings</a>
+					          	<a class="waves-effect waves-light btn-large action-btn" href="daily-affirmations.html">Speak daily affirmations</a>
+					          	<a class="waves-effect waves-light btn-large action-btn">Appreciation Exercise</a>
+					          	<a class="waves-effect waves-light btn-large action-btn">Listen to Positive music</a>
+					          	<a class="waves-effect waves-light btn-large action-btn">Please yourself</a>
 
+
+					      
 					          <ul class="collapsible" data-collapsible="accordion">
 							    <li>
 							      <div class="collapsible-header">Count your blessings.</div>
@@ -103,6 +113,7 @@
 							      <div class="collapsible-body"><p>This life can be difficult. Nobody escapes without pain. At some point—in some way—we all encounter it. When you do, remind yourself again that the trials may be difficult, but they will pass. And search deep to find meaning in the pain. Choose to look for the benefits that can be found in your trial. At the very least, perseverance is being built. And most likely, an ability to comfort others in their pain is also being developed.</p></div>
 							    </li>  
 							  </ul>
+
 					        </section>
 		            </div>
 		         
@@ -123,19 +134,6 @@
 	        <div class="swiper-pagination"></div>
 	    </div>
 	</div>
-
-
-<!-- Modal -->
-<div id="modal1" class="modal bottom-sheet modal-home">
-	<div class="modal-content gradient-radial">
-	  <!-- Login Buttons -->
-	  <p class="center login-text">Sign-in with</p>
-		<button class="waves-effect waves-light btn btn-small blue modal-button"><img class="material-icons left" src="img/facebook.svg">Facebook</button>
-		<button class="waves-effect waves-light btn btn-small btn-twitter modal-button"><img class="material-icons left" src="img/twitter.svg">Twitter</button>
-		<p class="center">By using Rolvid, you agree to Rolvid's</br><a href="video.html" >Terms of use</a> and <a href="video.html" >Privacy Policy</a></p>
-	</div>
-</div>
-
 
 
 	<!-- Slide animation -->
@@ -161,12 +159,11 @@
 		        $("#mainpage_body").animate({
 		            opacity: '0.999'
 		        }, 1000); 
-
-		         
 		    });                         
 		});
 	</script>
 
+	<!-- Slide reverse -->
 	<script type="text/javascript">
 				$(document).ready(function() {
 		    $("#top-animation-reverse").click(function() {
@@ -188,7 +185,6 @@
 		         $("#mainpage_body").animate({
 		            opacity: '0.000'
 		        }, 500); 
-		        
 		    });                         
 		});
 	</script>
@@ -211,62 +207,6 @@
     });
     </script>
 
-	<script type="text/javascript" charset="utf-8">
-	document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        i18n.init(function(err, t) {
-          $("#wrapper-home").i18n();
-          $("#wrapper-login").i18n();
-          $("#wrapper-signup").i18n();
-        });
-		$('#btnLogin').click(function(){
-		    var loginPassword = $('#login-password').val();
-		    var loginMsisdn = $('#login-msisdn').val();
-
-            if(!loginMsisdn || !loginPassword) {
-		        $('.error').text("All field must not be empty");
-		    }else if(loginPassword.length<4 || loginPassword.length>20 ) {
-                $('.error').text("Password must be 4-20 characters");
-		    }
-		    else {
-                var tokenData = {country_code: "62", msisdn: $('#login-msisdn').val(), password: $('#login-password').val(), login: 1}
-                clear();
-                requestToken(tokenData);
-			}
-		});
-		$('#btnSignup').click(function(){
-		    var registerName = $('#register-name').val();
-		    var registerPassword = $('#register-password').val();
-		    var registerMsisdn = $('#register-msisdn').val();
-
-            if(!registerMsisdn || !registerPassword || !registerName) {
-		        $('.error').text("All field must not be empty");
-		    }else if(registerPassword.length<4 || registerPassword.length>20 ) {
-                $('.error').text("Password must be 4-20 characters");
-		    }
-		    else {
-                window.localStorage.setItem("msisdn", $('#msisdn').val());
-                var registerData = {country_code: "62", msisdn: $('#register-msisdn').val(), password: $('#register-password').val(), name: $('#register-name').val()}
-                clear();
-                register(registerData);
-            }
-		});
-		$('#btnForgot').click(function(){
-		    clear();
-			window.location.href = "forgot.html";
-		});
-		$('#login-btnSignup').click(function() {
-		    clear();
-			$('#btn-signup').click();
-			$("#wrapper-login").hide();
-		});
-		$('#signup-btnLogin').click(function() {
-		    clear();
-			$('#btn-login').click();
-			$("#wrapper-signup").hide();
-		});
-    }
-    </script>
 
     <!-- Hide loading spinner -->
     <script type="text/javascript" charset="utf-8">
